@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
 
-  "name": "GTmetrix Analyzer Plugin",
-  "description": "This extension will analyze a page using GTmetrix",
+  "name": "Book Kit Bookmark Manager",
+  "description": "This extension add bookmarks to the Book Kit application",
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "build/icon.png",
+    "default_icon": "build/img/icon.png",
     "default_popup": "build/index.html"
   },
 
