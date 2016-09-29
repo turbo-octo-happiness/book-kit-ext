@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
 
-import Popup from './components/popup';
+import PopupContainer from './components/popup-container';
 // import store from './redux/store';
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<Popup />, document.getElementById('app'));
+  ReactDOM.render(<PopupContainer />, document.getElementById('app'));
 });
 
 //     <Provider store={store}></Provider>

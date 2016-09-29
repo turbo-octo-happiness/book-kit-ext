@@ -6,13 +6,7 @@ export default class Popup extends React.Component {
   }
 
   render() {
-    let page;
-    chrome.tabs.getSelected(null, (tab) => {
-      page = tab;
-      console.log(tab);
-    });
-    console.log(page);
-
+    const { isAuthenticated, page } = this.props;
     // async actions making `page` undefined before it gets used by tab
 
     return (
@@ -24,7 +18,7 @@ export default class Popup extends React.Component {
             type="text"
             ref={(title) => { this.title = title; }}
             id="form-title"
-            defaultValue={page.title}
+            // defaultValue={page.title}
             required
           />
           <label htmlFor="form-url">URL *</label>
@@ -32,7 +26,7 @@ export default class Popup extends React.Component {
             type="text"
             ref={(url) => { this.url = url; }}
             id="form-url"
-            defaultValue={page.url}
+            // defaultValue={page.url}
             required
           />
           <label htmlFor="form-description">Description</label>
