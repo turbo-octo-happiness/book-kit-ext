@@ -11,6 +11,10 @@
   },
 
   "permissions": [
-    "activeTab"
-  ]
+    "identity",
+    "activeTab",
+    "storage"
+  ],
+
+  "content_security_policy": "script-src 'self' https://cdn.auth0.com/; object-src 'self'"
 }

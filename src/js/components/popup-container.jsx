@@ -25,6 +25,7 @@ export default class PopupContainer extends React.Component {
   }
 
   getProfile(lock, authResult) {
+    console.log('in get profile');
     lock.getProfile(authResult.idToken, (err, profile) => {
       if (err) {
         this.setState({
@@ -41,7 +42,6 @@ export default class PopupContainer extends React.Component {
 
   componentWillMount() {
     const jwt = this.state.token;
-    console.log(jwt);
     // if (jwt) {
     //   const jwtExp = jwtDecode(jwt).exp;
     //   const expiryDate = new Date(0);

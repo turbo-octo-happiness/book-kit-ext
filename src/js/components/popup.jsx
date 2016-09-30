@@ -1,11 +1,25 @@
 import React from 'react';
 import Auth0Lock from 'auth0-lock';
 
+// https://turbo-octo-happiness.github.io/book-kit-ext-login/
+
 export default class Popup extends React.Component {
+  loginWindow() {
+    let token;
+    chrome.windows.create({'url': 'http://localhost:5000/', 'focused': true, 'type': 'popup', 'state': 'maximized'}, function(tab) {
+      console.log(tab, '<<<< TAB');
+      console.log(chrome.storage, '<<<< CHROME STORAGE');
+      token = localStorage.getItem('idToken');
+      console.log(token);
+    });
+  }
+
   render() {
     const { isAuthenticated, page, getProfile } = this.props;
+
     const lock = new Auth0Lock('6ElpyE9EazmBox2b9PAWytCnFJQTxBCa', 'ericsnell.auth0.com', {
       auth: {
+        redirectUrl: 'http://localhost:5000/#/main',
         responseType: 'token',
         params: {
           scope: 'openid name identities picture',
@@ -65,7 +79,10 @@ export default class Popup extends React.Component {
 
     return (
       <div>
-        <button onClick={() => { lock.show(); }}>Login</button>
+        <div id="root" style={{ width: '320px', margin: '40px auto', padding: '10px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box' }}>
+          embedded area
+        </div>
+        <button onClick={this.loginWindow}>Login</button>
       </div>
     );
   }
