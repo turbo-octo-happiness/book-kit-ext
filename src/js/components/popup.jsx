@@ -1,35 +1,33 @@
 import React from 'react';
-import Auth0Lock from 'auth0-lock';
+// import Auth0Lock from 'auth0-lock';
 
 // https://turbo-octo-happiness.github.io/book-kit-ext-login/
 
 export default class Popup extends React.Component {
   loginWindow() {
     let token;
-    chrome.windows.create({'url': 'http://localhost:5000/', 'focused': true, 'type': 'popup', 'state': 'maximized'}, function(tab) {
+    chrome.windows.create({'url': 'build/login.html', 'focused': true, 'type': 'popup', 'state': 'maximized'}, function(tab) {
       console.log(tab, '<<<< TAB');
       console.log(chrome.storage, '<<<< CHROME STORAGE');
-      token = localStorage.getItem('idToken');
-      console.log(token);
     });
   }
 
   render() {
     const { isAuthenticated, page, getProfile } = this.props;
-
-    const lock = new Auth0Lock('6ElpyE9EazmBox2b9PAWytCnFJQTxBCa', 'ericsnell.auth0.com', {
-      auth: {
-        redirectUrl: 'http://localhost:5000/#/main',
-        responseType: 'token',
-        params: {
-          scope: 'openid name identities picture',
-        },
-      },
-    });
-
-    lock.on('authenticated', (authResult) => {
-      getProfile(lock, authResult);
-    });
+    //
+    // const lock = new Auth0Lock('6ElpyE9EazmBox2b9PAWytCnFJQTxBCa', 'ericsnell.auth0.com', {
+    //   auth: {
+    //     redirectUrl: 'http://localhost:5000/#/main',
+    //     responseType: 'token',
+    //     params: {
+    //       scope: 'openid name identities picture',
+    //     },
+    //   },
+    // });
+    //
+    // lock.on('authenticated', (authResult) => {
+    //   getProfile(lock, authResult);
+    // });
 
     if (isAuthenticated) {
       return (
